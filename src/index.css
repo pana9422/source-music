@@ -1,13 +1,75 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Quicksand:wght@400;700&display=swap');
+:root {
+  --font-size-xl: 1.8rem;
+  --font-size-lg: 1.4rem;
+  --font-size-md: 1.2rem;
+  --font-size-sm: 1rem;
+  --font-size-xs: .9rem;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  --font-family: "Quicksand", sans-serif;
+  --line-height: 1.25;
+  --font-size: var(--font-size-lg);
+  --font-weight: 400;
+
+
+  --primary: #E86060;
+  --primary-light: #EB5757;
+  --primary-dark: #662323;
+  --primary-gradient: linear-gradient(0deg, #a7000088, #a7000088);
+  --secondary: #555555;
+  --secondary-light: #828282;
+  --secondary-dark: #828282;
+  --white: #FFFFFF;
+  
+}
+@media (min-width: 992px) {
+  :root {
+    --font-size-xl: 2.2rem;
+    --font-size-lg: 1.6rem;
+    --font-size-md: 1.4rem;
+    --font-size-sm: 1.3rem;
+    --font-size-xs: 1.2rem;
+  }
+}
+*,
+::before,
+::after{
+  box-sizing: border-box;
+}
+html{
+  font-size: 10px;
+}
+body{
+  display: block;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+a{
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-family);
+}
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family);
+}
+img{
+  width: 100%;
+}
+#root{
+  height: 100%;
+}
+h1,h2,h3,h4{
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+input,
+span{
+  font-family: var(--font-family);
 }
