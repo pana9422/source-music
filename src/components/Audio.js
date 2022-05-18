@@ -33,6 +33,7 @@ const Audio = ({ linkMusic }) => {
                 src={linkMusic.link}
                 controls
                 autoPlay
+                preload
             ></audio>
             <div className="player__mask">
                 <div className="player__music">
