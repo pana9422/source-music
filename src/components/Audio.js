@@ -7,6 +7,11 @@ const Audio = ({ linkMusic }) => {
     const player_range = useRef()
     const player_button = useRef()
 
+    const indexNow = [0]
+    let musicNow= Number(indexNow[0]);
+    let nextMusic = 0
+    let prevMusic = 0
+
     const fnControlSound = (range) => {
         player.current.volume = range / 100
     }
@@ -14,7 +19,7 @@ const Audio = ({ linkMusic }) => {
         player.current.muted = bool
     }
     const fnMusicPlay = () => {
-        if(player.current.paused){
+        if(player.current.paused || player.current.ended){
             player.current.play()
             player_button.current.querySelector('.fa-solid').classList.replace("fa-play","fa-pause")
             
@@ -23,6 +28,24 @@ const Audio = ({ linkMusic }) => {
             player_button.current.querySelector('.fa-solid').classList.replace("fa-pause","fa-play")
         }
     }
+    const fnMusicLoad =( link, listLink ) =>{
+        player.current.src= link
+        indexNow[0]= listLink.indexOf( link)
+        player.current.load()
+    }
+    const fnMusicNext = (listLink) => {  
+        musicNow = nextMusic = (listLink.length === (musicNow+1))? 0 : musicNow + 1
+        fnMusicLoad(listLink[nextMusic], listLink);
+        player.current.play()
+        indexNow[0]= nextMusic
+    }
+    const fnMusicPrev = (listLink) => {  
+        musicNow = prevMusic = (musicNow===0) ? listLink.length - 1 : musicNow - 1
+        fnMusicLoad(listLink[prevMusic], listLink);
+        player.current.play()
+        indexNow[0]= prevMusic
+    }
+
 
 
     return (
@@ -33,7 +56,6 @@ const Audio = ({ linkMusic }) => {
                 src={linkMusic.link}
                 controls
                 autoPlay
-                preload
             ></audio>
             <div className="player__mask">
                 <div className="player__music">
@@ -46,13 +68,13 @@ const Audio = ({ linkMusic }) => {
                     <span className="player__author">{linkMusic.name}</span>
                 </div>
                 <div className="player__controls">
-                    <button className="player__button player__button--back">
+                    <button className="player__button player__button--back" onClick={ ()=> fnMusicPrev(linkMusic.listLink) }>
                         <i className="fa-solid fa-backward-step"></i>
                     </button>
                     <button ref={player_button} className="player__button player__button--play"  onClick={ ()=> fnMusicPlay() }>
                         <i className="fa-solid fa-pause"></i>
                     </button>
-                    <button className="player__button player__button--next">
+                    <button className="player__button player__button--next" onClick={ ()=> fnMusicNext(linkMusic.listLink) }>
                         <i className="fa-solid fa-forward-step"></i>
                     </button>
                 </div>

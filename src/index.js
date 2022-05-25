@@ -3,6 +3,7 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import "./assets/favicon.ico"
 
 
 const root = createRoot(document.getElementById('root'));

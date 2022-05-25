@@ -39,6 +39,7 @@ const Playlist = ({ inputSearch }) => {
                 <Banner
                     image={albumList[0].artist.picture_medium}
                     imgBanner={albumList[0].artist.picture_medium}
+                    listLink = {albumList[0].linkList}
                     album={albumList[0].title}
                     author={albumList[0].artist.name}
                     rank={albumList[0].rank}
